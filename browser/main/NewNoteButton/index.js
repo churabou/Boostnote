@@ -35,20 +35,23 @@ class NewNoteButton extends React.Component {
   handleNewNoteButtonClick (e) {
     const { location, dispatch, match: { params }, config } = this.props
     const { storage, folder } = this.resolveTargetFolder()
-    if (config.ui.defaultNote === 'MARKDOWN_NOTE') {
-      createMarkdownNote(storage.key, folder.key, dispatch, location, params, config)
-    } else if (config.ui.defaultNote === 'SNIPPET_NOTE') {
-      createSnippetNote(storage.key, folder.key, dispatch, location, params, config)
-    } else {
-      modal.open(NewNoteModal, {
-        storage: storage.key,
-        folder: folder.key,
-        dispatch,
-        location,
-        params,
-        config
-      })
-    }
+    // 設定でマークダウンOrスニペットOrどちらかをえらモーダルを出すかを制御できるが、
+    // コメントアウトして常に新規MD作成にする。
+    createMarkdownNote(storage.key, folder.key, dispatch, location, params, config)
+    // if (config.ui.defaultNote === 'MARKDOWN_NOTE') {
+    //   createMarkdownNote(storage.key, folder.key, dispatch, location, params, config)
+    // } else if (config.ui.defaultNote === 'SNIPPET_NOTE') {
+    //   createSnippetNote(storage.key, folder.key, dispatch, location, params, config)
+    // } else {
+    //   modal.open(NewNoteModal, {
+    //     storage: storage.key,
+    //     folder: folder.key,
+    //     dispatch,
+    //     location,
+    //     params,
+    //     config
+    //   })
+    // }
   }
 
   resolveTargetFolder () {

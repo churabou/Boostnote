@@ -6,7 +6,7 @@
   width 96%
   overflow-x auto
   white-space nowrap
-  top 50px
+  top 100px
   position absolute
   &::-webkit-scrollbar
     height 8px
@@ -16,7 +16,7 @@
   align-items center
   margin 0px 2px 2px
   padding 2px 4px
-  background-color alpha($ui-tag-backgroundColor, 3%)
+  background-color $ui-tag-backgroundColor
   border-radius 4px
   position relative
   clearfix()
@@ -41,6 +41,7 @@
   color $ui-text-color
   padding 4px 16px 4px 8px
   cursor pointer
+  color #fff
 
 body[data-theme="dark"]
   .tag

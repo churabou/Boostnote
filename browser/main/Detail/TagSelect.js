@@ -209,7 +209,7 @@ class TagSelect extends React.Component {
             key={tag}
             style={wrapperStyle}
           >
-            <span styleName='tag-label' style={textStyle} onClick={(e) => this.handleTagLabelClick(tag)}>#{tag}</span>
+            <span styleName='tag-label' style={textStyle} onClick={(e) => this.handleTagLabelClick(tag)}>{tag}</span>
             <button styleName='tag-removeButton'
               onClick={(e) => this.handleTagRemoveButtonClick(tag)}
             >

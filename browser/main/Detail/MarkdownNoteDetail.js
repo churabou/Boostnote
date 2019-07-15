@@ -112,12 +112,6 @@ class MarkdownNoteDetail extends React.Component {
   handleUpdateContent () {
     const { note } = this.state
     note.content = this.refs.content.value
-
-    let title = findNoteTitle(note.content, this.props.config.editor.enableFrontMatterTitle, this.props.config.editor.frontMatterTitleField)
-    title = striptags(title)
-    title = markdown.strip(title)
-    note.title = title
-
     this.updateNote(note)
   }
 
@@ -378,6 +372,14 @@ class MarkdownNoteDetail extends React.Component {
     this.updateNote(note)
   }
 
+  handleTitleChange (e) {
+    const { note } = this.state
+    note.content = this.refs.content.value
+    const title = e.target.value
+    note.title = title
+    this.updateNote(note)
+  }
+
   renderEditor () {
     const { config, ignorePreviewPointerEvents } = this.props
     const { note } = this.state
@@ -458,7 +460,14 @@ class MarkdownNoteDetail extends React.Component {
             onChange={(e) => this.handleFolderChange(e)}
           />
         </div>
-
+        <div styleName='title-text-field-div'>
+          <input
+            type='text'
+            styleName='title-text-field'
+            value={this.state.note.title}
+            onChange={(e) => this.handleTitleChange(e)}
+          />
+        </div>
         <TagSelect
           ref='tags'
           value={this.state.note.tags}
