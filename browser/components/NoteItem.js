@@ -25,7 +25,7 @@ const TagElement = ({ tagName, color }) => {
   }
   return (
     <span styleName='item-bottom-tagList-item' key={tagName} style={style}>
-      #{tagName}
+      {tagName}
     </span>
   )
 }
